@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity implements onClick {
+public class MainActivity extends AppCompatActivity {
 
     CardView uploadNotice,addGalleryImage;
 
@@ -22,22 +22,21 @@ public class MainActivity extends AppCompatActivity implements onClick {
         addGalleryImage = findViewById(R.id.addGalleryImage);
         uploadNotice = findViewById(R.id.addNotice);
 
-        uploadNotice.setOnClickListener((View.OnClickListener) this);
-        addGalleryImage.setOnClickListener((View.OnClickListener) this);
+        uploadNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, uploadNotice.class);
+                startActivity(intent);
+            }
+        });
+        addGalleryImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UploadImage.class);
+                startActivity(intent);
+            }
+        });
     }
-    @Override
-    public void onClick(View view) {
-        Intent intent;
-        if (view.getId() == R.id.addNotice) {
-            intent = new Intent(MainActivity.this, uploadNotice.class);
-            startActivity(intent);
-        }
-        else if (view.getId() == R.id.addGalleryImage) {
-            intent = new Intent(MainActivity.this, UploadImage.class);
-            startActivity(intent);
-        }
-    }
-
 
 
 }
