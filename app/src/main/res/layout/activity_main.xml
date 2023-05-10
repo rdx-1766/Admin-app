@@ -31,7 +31,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/circle_green"
-                    android:src="@drawable/ic_upload"
+                    android:src="@drawable/ic_notice"
                     android:padding="15dp"/>
                 
                 <View
