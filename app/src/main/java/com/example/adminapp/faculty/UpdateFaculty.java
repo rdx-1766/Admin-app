@@ -27,9 +27,9 @@ import java.util.List;
 public class UpdateFaculty extends AppCompatActivity {
 
     FloatingActionButton fab;
-    private RecyclerView csDepartment , isDepartment , mechDepartment;
-    private LinearLayout csNoData , isNoData, mechNoData;
-    private List<TeacherData> list1,list2,list3;
+    private RecyclerView csDepartment , iseDepartment , mechDepartment , eeeDepartment;
+    private LinearLayout csNoData , iseNoData, mechNoData , eeeNoData;
+    private List<TeacherData> list1,list2,list3,list4;
     private DatabaseReference reference,dbRef;
     private TeacherAdapater adapater;
     @Override
@@ -39,18 +39,21 @@ public class UpdateFaculty extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
         csDepartment = findViewById(R.id.csDepartment);
-        isDepartment = findViewById(R.id.isDepartment);
+        iseDepartment = findViewById(R.id.iseDepartment);
         mechDepartment = findViewById(R.id.mechDepartment);
+        eeeDepartment = findViewById(R.id.eeeDepartment);
 
         csNoData = findViewById(R.id.csNoData);
-        isNoData = findViewById(R.id.isNoData);
+        iseNoData = findViewById(R.id.iseNoData);
         mechNoData = findViewById(R.id.mechNoData);
+        eeeNoData = findViewById(R.id.eeeNoData);
 
         reference = FirebaseDatabase.getInstance().getReference().child("teacher");
 
         csDepartment();
         mechDepartment();
-        isDepartment();
+        iseDepartment();
+        eeeDepartment();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +61,38 @@ public class UpdateFaculty extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void eeeDepartment() {
+        dbRef = reference.child("Electrical");
+
+        dbRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list4 = new ArrayList<>();
+                if(!snapshot.exists()){
+                    eeeNoData.setVisibility(View.VISIBLE);
+                    eeeDepartment.setVisibility(View.GONE);
+                }else{
+                    eeeNoData.setVisibility(View.GONE);
+                    eeeDepartment.setVisibility(View.VISIBLE);
+                    for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        TeacherData data = dataSnapshot.getValue(TeacherData.class);
+                        list4.add(data);
+                    }
+                    eeeDepartment.setHasFixedSize(true);
+                    eeeDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
+                    adapater = new TeacherAdapater(list4,UpdateFaculty.this);
+                    eeeDepartment.setAdapter(adapater);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(UpdateFaculty.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void csDepartment() {
@@ -92,7 +127,7 @@ public class UpdateFaculty extends AppCompatActivity {
             }
         });
     }
-    private void isDepartment() {
+    private void iseDepartment() {
         //String uid = FirebaseAuth.getInstance().getUid();
         dbRef = reference.child("Information Science");
 
@@ -102,19 +137,19 @@ public class UpdateFaculty extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 list2 = new ArrayList<>();
                 if(!snapshot.exists()){
-                    isNoData.setVisibility(View.VISIBLE);
-                    isDepartment.setVisibility(View.GONE);
+                    iseNoData.setVisibility(View.VISIBLE);
+                    iseDepartment.setVisibility(View.GONE);
                 }else{
-                    isNoData.setVisibility(View.GONE);
-                    isDepartment.setVisibility(View.VISIBLE);
+                    iseNoData.setVisibility(View.GONE);
+                    iseDepartment.setVisibility(View.VISIBLE);
                     for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                         TeacherData data = dataSnapshot.getValue(TeacherData.class);
                         list2.add(data);
                     }
-                    isDepartment.setHasFixedSize(true);
-                    isDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
+                    iseDepartment.setHasFixedSize(true);
+                    iseDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
                     adapater = new TeacherAdapater(list2,UpdateFaculty.this);
-                    isDepartment.setAdapter(adapater);
+                    iseDepartment.setAdapter(adapater);
                 }
             }
 
@@ -124,6 +159,7 @@ public class UpdateFaculty extends AppCompatActivity {
             }
         });
     }
+
     private void mechDepartment() {
         //String uid = FirebaseAuth.getInstance().getUid();
         dbRef = reference.child("Mechanical");

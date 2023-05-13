@@ -7,11 +7,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/orange"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="15dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -27,14 +29,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:gravity="center"
+                    android:textStyle="bold"
                     android:text="Hemanth S"
+                    android:layout_marginBottom="5dp"
                     android:textColor="@color/textColor"
                     android:id="@+id/teacherName"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:textSize="18sp"
+                    android:paddingLeft="5dp"
                     android:text="Associate Professor"
                     android:textColor="@color/textColor"
                     android:id="@+id/teacherPost"/>
@@ -43,6 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
+                    android:paddingLeft="5dp"
                     android:text="hemanths@gmail.com"
                     android:textColor="@color/textColor"
                     android:id="@+id/teacherEmail"/>
@@ -51,6 +59,9 @@
                     android:id="@+id/teacherUpdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:textColor="@color/darkblue"
                     android:text="Update Info"
                     style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_marginVertical="4dp"/>
@@ -59,7 +70,7 @@
             
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/teacherImage"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="120dp"
                 android:src="@drawable/avatar"
                 android:layout_weight="0.5"
