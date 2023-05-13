@@ -1,8 +1,11 @@
 package com.example.adminapp.faculty;
 
+import com.google.firebase.database.PropertyName;
+
 public class TeacherData {
     private String name , email , post , image , key;
 
+    public TeacherData(){}
     public TeacherData(String name, String email, String post, String image, String key) {
         this.name = name;
         this.email = email;
@@ -26,7 +29,6 @@ public class TeacherData {
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getPost() {
         return post;
     }
