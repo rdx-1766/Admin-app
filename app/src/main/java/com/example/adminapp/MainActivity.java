@@ -6,15 +6,13 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.example.adminapp.faculty.UpdateFaculty;
+import com.example.adminapp.notice.DeleteNoticeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView uploadNotice,addGalleryImage,addEbook,addFaculty;
+    CardView uploadNotice,addGalleryImage,addEbook,addFaculty,deleteActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
         uploadNotice = findViewById(R.id.addNotice);
         addEbook = findViewById(R.id.addEbook);
         addFaculty = findViewById(R.id.addFaculty);
+        deleteActivity = findViewById(R.id.deleteNotice);
 
         uploadNotice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, uploadNotice.class);
+                Intent intent = new Intent(MainActivity.this, com.example.adminapp.notice.uploadNotice.class);
                 startActivity(intent);
             }
         });
@@ -53,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, UpdateFaculty.class);
+                startActivity(intent);
+            }
+        });
+
+        deleteActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DeleteNoticeActivity.class);
                 startActivity(intent);
             }
         });

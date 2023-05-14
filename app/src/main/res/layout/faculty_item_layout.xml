@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="18sp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="3dp"
                     android:text="Associate Professor"
                     android:textColor="@color/textColor"
                     android:id="@+id/teacherPost"/>
@@ -49,8 +49,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:paddingLeft="5dp"
+                    android:textSize="13sp"
+                    android:paddingLeft="3dp"
                     android:text="hemanths@gmail.com"
                     android:textColor="@color/textColor"
                     android:id="@+id/teacherEmail"/>

@@ -83,7 +83,7 @@ public class UpdateFaculty extends AppCompatActivity {
                     }
                     eeeDepartment.setHasFixedSize(true);
                     eeeDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
-                    adapater = new TeacherAdapater(list4,UpdateFaculty.this);
+                    adapater = new TeacherAdapater(list4,UpdateFaculty.this,"Electrical");
                     eeeDepartment.setAdapter(adapater);
                 }
             }
@@ -116,7 +116,7 @@ public class UpdateFaculty extends AppCompatActivity {
                     }
                     csDepartment.setHasFixedSize(true);
                     csDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
-                    adapater = new TeacherAdapater(list1,UpdateFaculty.this);
+                    adapater = new TeacherAdapater(list1,UpdateFaculty.this,"Computer Science");
                     csDepartment.setAdapter(adapater);
                 }
             }
@@ -146,9 +146,10 @@ public class UpdateFaculty extends AppCompatActivity {
                         TeacherData data = dataSnapshot.getValue(TeacherData.class);
                         list2.add(data);
                     }
+
                     iseDepartment.setHasFixedSize(true);
                     iseDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
-                    adapater = new TeacherAdapater(list2,UpdateFaculty.this);
+                    adapater = new TeacherAdapater(list2,UpdateFaculty.this,"Information Science");
                     iseDepartment.setAdapter(adapater);
                 }
             }
@@ -181,7 +182,7 @@ public class UpdateFaculty extends AppCompatActivity {
                     }
                     mechDepartment.setHasFixedSize(true);
                     mechDepartment.setLayoutManager(new LinearLayoutManager(UpdateFaculty.this));
-                    adapater = new TeacherAdapater(list3,UpdateFaculty.this);
+                    adapater = new TeacherAdapater(list3,UpdateFaculty.this,"Mechanical");
                     mechDepartment.setAdapter(adapater);
                 }
             }

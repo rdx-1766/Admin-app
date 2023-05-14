@@ -19,10 +19,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.adminapp.NoticeData;
 import com.example.adminapp.R;
-import com.example.adminapp.UploadImage;
-import com.example.adminapp.uploadNotice;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,8 +32,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class AddTeachers extends AppCompatActivity {
 
@@ -119,9 +114,11 @@ public class AddTeachers extends AppCompatActivity {
             Toast.makeText(this, "Please select faculty category", Toast.LENGTH_SHORT).show();
         }
         else if(bitmap == null){
-            pd.setMessage("Uploading...");
-            pd.show();
-            insertData();
+//            pd.setMessage("Uploading...");
+//            pd.show();
+            Toast.makeText(this, "Please select teacher image", Toast.LENGTH_SHORT).show();
+
+//            insertData();
         }
         else {
             pd.setMessage("Uploading...");
