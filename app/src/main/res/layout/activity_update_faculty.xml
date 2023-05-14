@@ -160,6 +160,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/fab"
         style="@style/Widget.Material3.Button"
+        android:backgroundTint="@color/darkblue"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/ic_add"

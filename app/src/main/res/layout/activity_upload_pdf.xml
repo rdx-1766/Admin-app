@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     android:padding="16dp"
     tools:context=".UploadPdf">
 
@@ -72,6 +73,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pdfTitle"
                 android:layout_width="match_parent"
+                android:backgroundTint="@color/darkblue"
                 android:layout_height="wrap_content"
                 android:hint="Pdf Title" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,6 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Upload File"
+            android:backgroundTint="@color/darkblue"
             android:layout_marginTop="16dp"
             android:textAllCaps="false"
             android:id="@+id/uploadPdfBtn" />
