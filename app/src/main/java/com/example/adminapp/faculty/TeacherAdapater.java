@@ -46,7 +46,7 @@ public class TeacherAdapater extends RecyclerView.Adapter<TeacherAdapater.Teache
         holder.post.setText(item.getPost());
 
         try {
-            Picasso.get().load(item.getImage()).into(holder.imageView);
+            Picasso.get().load(item.getImage()).placeholder(R.drawable.avatar).into(holder.imageView);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
