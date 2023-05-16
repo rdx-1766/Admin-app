@@ -2,6 +2,7 @@ package com.example.adminapp.faculty;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.adminapp.MainActivity;
 import com.example.adminapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +38,8 @@ public class UpdateFaculty extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_faculty);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor(UpdateFaculty.this,R.color.darkblue));
 
         fab = findViewById(R.id.fab);
         csDepartment = findViewById(R.id.csDepartment);

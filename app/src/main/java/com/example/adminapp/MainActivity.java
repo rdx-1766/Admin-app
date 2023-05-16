@@ -2,6 +2,7 @@ package com.example.adminapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.darkblue));
 
         addGalleryImage = findViewById(R.id.addGalleryImage);
         uploadNotice = findViewById(R.id.addNotice);

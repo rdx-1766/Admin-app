@@ -2,6 +2,7 @@ package com.example.adminapp.notice;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.adminapp.MainActivity;
 import com.example.adminapp.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +34,8 @@ public class DeleteNoticeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_notice);
+
+        getWindow().setStatusBarColor(ContextCompat.getColor(DeleteNoticeActivity.this,R.color.darkblue));
 
         deleteNoticeRecycler = findViewById(R.id.deleteNoticeRecycler);
         progressBar = findViewById(R.id.progressBar);
