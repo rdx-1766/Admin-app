@@ -115,10 +115,10 @@ public class UploadPdf extends AppCompatActivity {
         String uniqueKey = databaseReference.child("pdf").push().getKey();
         HashMap data = new HashMap();
 
-        data.put("pdfTitle",title);
-        data.put("pdfUrl",downloadUrl);
+        data.put("name",title);
+        data.put("pdfUrl",valueOf);
 
-        databaseReference.child("pdf").setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child("pdf").child(uniqueKey).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 pd.dismiss();
