@@ -24,6 +24,9 @@
         android:theme="@style/Theme.AdminApp"
         tools:targetApi="31">
         <activity
+            android:name=".UploadProject"
+            android:exported="false" />
+        <activity
             android:name=".notice.DeleteNoticeActivity"
             android:exported="false" />
         <activity

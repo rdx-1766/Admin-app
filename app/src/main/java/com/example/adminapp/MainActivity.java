@@ -13,7 +13,7 @@ import com.example.adminapp.notice.DeleteNoticeActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView uploadNotice,addGalleryImage,addEbook,addFaculty,deleteActivity;
+    CardView uploadNotice,addGalleryImage,addEbook,addFaculty,deleteActivity,uploadProject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         addEbook = findViewById(R.id.addEbook);
         addFaculty = findViewById(R.id.addFaculty);
         deleteActivity = findViewById(R.id.deleteNotice);
+        uploadProject = findViewById(R.id.uploadProject);
 
         uploadNotice.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, DeleteNoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        uploadProject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,UploadProject.class);
                 startActivity(intent);
             }
         });
