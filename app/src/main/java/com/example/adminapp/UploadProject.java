@@ -12,9 +12,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,14 +36,15 @@ import java.util.HashMap;
 
 public class UploadProject extends AppCompatActivity {
 
-    private EditText projectTitle,projectDesc,projectDeveloper,projectLink;
+    private EditText projectTitle,projectDesc,projectDeveloper,projectLink,projectFuture,projectFeatures,projectDemoLink,projectLang,problemStm;
     private Button uploadProjectBtn;
     private DatabaseReference databaseReference;
     private ImageView pdfImg;
     private TextView projectTextView;
     private StorageReference storageReference;
 
-    private String title,desc,link,developer,pdfUrl,pdfName;
+    private Spinner projectCategory;
+    private String title,desc,link,developer,pdfUrl,pdfName,category,features,future,lang,demoLink,ps;
     private ProgressDialog pd;
 
     private final int REQ = 1;
@@ -57,6 +61,12 @@ public class UploadProject extends AppCompatActivity {
         projectDesc = findViewById(R.id.projectDesc);
         projectDeveloper = findViewById(R.id.projectDeveloper);
         projectLink = findViewById(R.id.projectLink);
+        projectCategory = findViewById(R.id.projectCategory);
+        projectFeatures = findViewById(R.id.projectFeatures);
+        projectFuture = findViewById(R.id.projectFuture);
+        projectDemoLink = findViewById(R.id.projectDemoLink);
+        problemStm = findViewById(R.id.problemStm);
+        projectLang = findViewById(R.id.projectLang);
 
         uploadProjectBtn = findViewById(R.id.uploadProjectBtn);
         pdfImg = findViewById(R.id.addPdf);
@@ -65,6 +75,20 @@ public class UploadProject extends AppCompatActivity {
         pd = new ProgressDialog(this);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         storageReference = FirebaseStorage.getInstance().getReference();
+
+        String [] items = new String[]{"Android Development","Full-Stack Development","Data Science","Machine Learning","IOT","AR-VR","Artificial Intelligence"};
+        projectCategory.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,items));
+        projectCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                category = projectCategory.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         pdfImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +104,12 @@ public class UploadProject extends AppCompatActivity {
                 desc = projectDesc.getText().toString();
                 link = projectLink.getText().toString();
                 developer = projectDeveloper.getText().toString();
+                demoLink = projectDemoLink.getText().toString();
+                features = projectFeatures.getText().toString();
+                future = projectFuture.getText().toString();
+                lang = projectLang.getText().toString();
+                ps = problemStm.getText().toString();
+
                 if(title.isEmpty()){
                     projectTitle.setError("Empty");
                     projectTitle.requestFocus();
@@ -98,6 +128,18 @@ public class UploadProject extends AppCompatActivity {
                 }
                 else if(pdfData == null){
                     Toast.makeText(UploadProject.this, "Please Upload Pdf", Toast.LENGTH_SHORT).show();
+                }
+                else if(ps.isEmpty()){
+                    problemStm.setError("Empty");
+                    problemStm.requestFocus();
+                }
+                else if(features.isEmpty()){
+                    projectFeatures.setError("Empty");
+                    projectFeatures.requestFocus();
+                }
+                else if(lang.isEmpty()){
+                    projectLang.setError("Empty");
+                    projectLang.requestFocus();
                 }
                 else{
                     uploadPdf();
@@ -139,8 +181,13 @@ public class UploadProject extends AppCompatActivity {
         data.put("pdeveloper",developer);
         data.put("plink",link);
         data.put("pdfUrl",valueOf);
+        data.put("ps",ps);
+        data.put("demo",demoLink);
+        data.put("features",features);
+        data.put("future",future);
+        data.put("lang",lang);
 
-        databaseReference.child("Projects").child(uniqueKey).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.child("Projects").child(category).child(title).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 pd.dismiss();
